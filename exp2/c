@@ -1,0 +1,27 @@
+// A generic function that can handle both numbers and strings
+function addOrConcatenate<T>(a: T, b: T): T {
+    // Check if both inputs are numbers
+    if (typeof a === 'number' && typeof b === 'number') {
+      return (a + b) as T;  // Adding numbers
+    }
+    // Check if both inputs are strings
+    else if (typeof a === 'string' && typeof b === 'string') {
+      return (a + b) as T;  // Concatenating strings
+    }
+    // Throw error if the types do not match or are not string/number
+    else {
+      throw new Error('Both arguments must be of the same type (either numbers or strings)');
+    }
+  }
+  
+  // Test cases with numbers
+  const sum = addOrConcatenate(5, 10);
+  console.log('Sum of numbers:', sum); // Output: 15
+  
+  // Test cases with strings
+  const concatenated = addOrConcatenate("Hello, ", "World!");
+  console.log('Concatenated strings:', concatenated); // Output: "Hello, World!"
+  
+  // Uncommenting this will cause an error because we are mixing types:
+  // const errorCase = addOrConcatenate(5, "string");  // Error: Both arguments must be of the same type
+  
