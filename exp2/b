@@ -1,0 +1,58 @@
+class Student {
+    name: string;
+    studentId: string;
+    grade: string;
+    libraryAccount: LibraryAccount;
+  
+    constructor(name: string, studentId: string, grade: string, libraryAccount: LibraryAccount) {
+      this.name = name;
+      this.studentId = studentId;
+      this.grade = grade;
+      this.libraryAccount = libraryAccount;
+    }
+  
+    getDetails(): string {
+      return `Student Name: ${this.name}\nStudent ID: ${this.studentId}\nGrade: ${this.grade}`;
+    }
+  }
+
+  class GraduateStudent extends Student {
+    thesisTopic: string;
+  
+    constructor(name: string, studentId: string, grade: string, thesisTopic: string, libraryAccount: LibraryAccount) {
+      super(name, studentId, grade, libraryAccount);
+      this.thesisTopic = thesisTopic;
+    }
+  
+    getDetails(): string {
+      return `${super.getDetails()}\nThesis Topic: ${this.thesisTopic}`;
+    }
+  }
+  class LibraryAccount {
+    accountId: string;
+    booksIssued: number;
+  
+    constructor(accountId: string, booksIssued: number) {
+      this.accountId = accountId;
+      this.booksIssued = booksIssued;
+    }
+  
+    getLibraryInfo(): string {
+      return `Library Account ID: ${this.accountId}\nBooks Issued: ${this.booksIssued}`;
+    }
+  }
+// Create LibraryAccount instance
+const libraryAccount = new LibraryAccount("A123", 5);
+
+// Create Student instance
+const student = new Student("Alice", "S12345", "A", libraryAccount);
+
+// Create GraduateStudent instance
+const graduateStudent = new GraduateStudent("Bob", "S67890", "B", "Artificial Intelligence", libraryAccount);
+
+// Display details
+console.log(student.getDetails());
+console.log(student.libraryAccount.getLibraryInfo());
+
+console.log("\nGraduate Student Details:");
+console.log(graduateStudent.getDetails());
