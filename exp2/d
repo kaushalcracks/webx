@@ -1,0 +1,59 @@
+interface Employee {
+    name: string;
+    id: string;
+    role: string;
+  
+    // Method to return employee details
+    getDetails(): string;
+  }
+  class Manager implements Employee {
+    name: string;
+    id: string;
+    role: string;
+    department: string;
+  
+    // Constructor to initialize Manager details
+    constructor(name: string, id: string, department: string) {
+      this.name = name;
+      this.id = id;
+      this.role = "Manager";
+      this.department = department;
+    }
+  
+    // Overriding the getDetails() method to include department
+    getDetails(): string {
+      return `Name: ${this.name}\nID: ${this.id}\nRole: ${this.role}\nDepartment: ${this.department}`;
+    }
+  }
+  class Developer implements Employee {
+    name: string;
+    id: string;
+    role: string;
+    programmingLanguages: string[];
+  
+    // Constructor to initialize Developer details
+    constructor(name: string, id: string, programmingLanguages: string[]) {
+      this.name = name;
+      this.id = id;
+      this.role = "Developer";
+      this.programmingLanguages = programmingLanguages;
+    }
+  
+    // Overriding the getDetails() method to include programming languages
+    getDetails(): string {
+      return `Name: ${this.name}\nID: ${this.id}\nRole: ${this.role}\nProgramming Languages: ${this.programmingLanguages.join(', ')}`;
+    }
+  }
+// Creating an instance of Manager
+const manager = new Manager("Alice", "M123", "Sales");
+
+// Creating an instance of Developer
+const developer = new Developer("Bob", "D456", ["JavaScript", "TypeScript", "Python"]);
+
+// Displaying details of Manager and Developer
+console.log("Manager Details:");
+console.log(manager.getDetails());
+
+console.log("\nDeveloper Details:");
+console.log(developer.getDetails());
+      
