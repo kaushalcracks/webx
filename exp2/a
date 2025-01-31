@@ -1,0 +1,59 @@
+// Calculator class demonstrating usage of data types including 'any' and 'never'
+class Calculator {
+  
+    // Add two values (numbers or strings) based on the type
+    add(a: any, b: any): any {
+      if (typeof a === 'number' && typeof b === 'number') {
+        return a + b; // Adds if both are numbers
+      } else if (typeof a === 'string' && typeof b === 'string') {
+        return a + b; // Concatenates if both are strings
+      } else {
+        throw new Error('Invalid input types'); // Throw error if types are mismatched
+      }
+    }
+  
+    // Subtract two numbers
+    subtract(a: number, b: number): number {
+      return a - b;
+    }
+  
+    // Multiply two numbers
+    multiply(a: number, b: number): number {
+      return a * b;
+    }
+  
+    // Divide two numbers
+    divide(a: number, b: number): number {
+      if (b === 0) {
+        throw new Error('Cannot divide by zero'); // Handle division by zero
+      }
+      return a / b;
+    }
+  
+    // Example of a function that never returns (infinite loop)
+    infiniteLoop(): never {
+      while (true) {
+        // Infinite loop - this function will never return
+      }
+    }
+  }
+  
+  // Creating an instance of the Calculator class
+  const calculator = new Calculator();
+  
+  // Test the add function with numbers and strings
+  console.log("Addition of 5 + 10: ", calculator.add(5, 10)); // Outputs: 15
+  console.log("Concatenation of 'Hello' + ' World!': ", calculator.add("Hello", " World!")); // Outputs: "Hello World!"
+  
+  // Test subtraction, multiplication, and division
+  console.log("Subtraction of 20 - 10: ", calculator.subtract(20, 10)); // Outputs: 10
+  console.log("Multiplication of 5 * 3: ", calculator.multiply(5, 3)); // Outputs: 15
+  console.log("Division of 10 / 2: ", calculator.divide(10, 2)); // Outputs: 5
+  
+  // Testing division by zero (will throw error)
+  try {
+    console.log("Division of 10 / 0: ", calculator.divide(10, 0));
+  } catch (error) {
+    console.log(error.message); // Outputs: "Cannot divide by zero"
+  }
+  
